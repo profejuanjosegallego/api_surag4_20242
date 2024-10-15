@@ -1,5 +1,6 @@
 package com.example.API.REST.G4.modelos;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -20,6 +21,13 @@ public class Paciente {
     private Boolean tienePoliza;
     private String grupoIngresos; //A,B,C
     private LocalDate fechaAfiliacion; //SOLOS VALIDAS ENTRE 1995-2024
+
+
+    //las relaciones son atributos
+    @ManyToOne
+    @JoinColumn(name = "fk_medico", referencedColumnName = "id")
+    @JsonBackReference
+    private Medico medico;
 
     public Paciente() {
     }
