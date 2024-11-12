@@ -3,7 +3,9 @@ package com.example.API.REST.G4.servicios;
 import com.example.API.REST.G4.modelos.Paciente;
 import com.example.API.REST.G4.repositorios.IRepositorioPaciente;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class PacienteServicio {
 
     //Para usar un servicio debo llamar al repositorio
@@ -14,8 +16,14 @@ public class PacienteServicio {
     //Listo las operaciones que voy a realizar en BD
 
     //registrarPaciente
-    public Paciente registrarPaciente(Paciente datosPaciente){
-        return null;
+    public Paciente registrarPaciente(Paciente datosPaciente) throws Exception{
+        try{
+            //Guardar en bd los datos del paciente
+            return iRepositorioPaciente.save(datosPaciente);
+        }catch(Exception error){
+            throw new Exception(error.getMessage());
+        }
+
     }
 
     //buscarPacientes
