@@ -5,6 +5,8 @@ import com.example.API.REST.G4.repositorios.IRepositorioPaciente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PacienteServicio {
 
@@ -27,6 +29,13 @@ public class PacienteServicio {
     }
 
     //buscarPacientes
+    public List<Paciente> buscarPacientes() throws Exception{
+        try{
+            return iRepositorioPaciente.findAll();
+        }catch (Exception error){
+            throw new Exception(error.getMessage());
+        }
+    }
 
     //buscarUnPacientePorId
 
